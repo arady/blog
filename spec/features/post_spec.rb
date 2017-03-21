@@ -48,4 +48,16 @@ RSpec.describe do
     expect(page).to have_content("Content can't be blank")
   end
 
+
+  it 'ensures that image upload is validated' do
+    visit '/posts/new'
+
+    fill_in 'Title', with: 'Title'
+    fill_in 'Content', with: 'Contnt'
+    click_button 'Create Post'
+
+    expect(page).to have_content("Thumbnail can't be blank")
+
+  end
+
 end
